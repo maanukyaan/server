@@ -50,7 +50,7 @@ fs.access(imgFolderPath)
   });
 
 app.use("/img", express.static(path.join(__dirname, "img/")));
-app.use("/assets", express.static(path.join(__dirname, "dist/assets")));
+app.use("/dist", express.static(path.join(__dirname, "dist/")));
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
