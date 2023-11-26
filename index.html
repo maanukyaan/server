@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* html,
+      body {
+        width: 100%;
+        height: 100%;
+      } */
+
+      .step-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      .form-step {
+        text-align: center;
+      }
+
+      .form-step h2 {
+        font-size: 30px;
+      }
+
+      .form-step .step-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+
+      .form-step .step-buttons button {
+        margin: 0 20px 0 0;
+        outline: none;
+        cursor: pointer;
+        background: transparent;
+        color: #222;
+        border: 1px solid #222;
+        padding: 10px 40px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .form-step .step-buttons button:hover {
+        background: #e4e4e4;
+        color: #222;
+        border: 1px solid #222;
+      }
+
+      .form-step .step-buttons button.active {
+        background: rgb(22, 255, 111);
+        color: #222;
+        border: 1px solid #222;
+      }
+
+      .btn {
+        margin: 20px 10px 0 0;
+        outline: none;
+        cursor: pointer;
+        background: #222;
+        color: #f1f1f1;
+        border: 1px solid #f1f1f1;
+        padding: 10px 40px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background: rgb(239, 61, 218);
+        color: #f1f1f1;
+        border: 1px solid rgb(34, 34, 34);
+      }
+
+      .step-input {
+        outline: none;
+        padding: 10px;
+        width: 400px;
+        border-radius: 5px;
+        border: 3px solid #222;
+      }
+
+      .fade-enter {
+        opacity: 0.01;
+      }
+
+      .fade-enter.fade-enter-active {
+        opacity: 1;
+        transition: opacity 1000ms ease-in;
+      }
+
+      .fade-exit {
+        opacity: 1;
+      }
+
+      .fade-exit.fade-exit-active {
+        opacity: 0.01;
+        transition: opacity 100ms ease-in;
+      }
+
+      .success {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+      }
+
+      .success img {
+        width: 500px;
+        height: auto;
+      }
+
+      .success a {
+        text-decoration: none;
+        text-align: center;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .success {
+          width: 100%;
+        }
+        .success img {
+          max-width: 90%;
+        }
+
+        .form-step .step-buttons button {
+          margin: 0 20px 20px 0;
+        }
+
+        input {
+          max-width: 85%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="success">
+      <h2>Результат:</h2>
+      <img src="" alt="Generated" />
+
+      <a class="btn" href="https://style-match.ru/#Price">
+        Создать образ заново
+      </a>
+
+      <a class="btn" href="https://style-match.ru/#Price">
+        Заказать подбор ссылок к луку у стилиста
+      </a>
+    </div>
+    <div class="step-form">
+      <!-- Loading or result section -->
+      <div class="form-step" id="step1">
+        <!-- Step 1 -->
+        <h2>Выберите свой пол</h2>
+        <div class="step-buttons">
+          <button onclick="setActive(this)">мужской</button>
+          <button onclick="setActive(this)">женский</button>
+        </div>
+      </div>
+
+      <div class="form-step" id="step2">
+        <!-- Step 2 -->
+        <h2>В каком стиле требуется лук?</h2>
+        <div class="step-buttons">
+          <button onclick="setActive(this)">Классический</button>
+          <button onclick="setActive(this)">Минимализм</button>
+          <button onclick="setActive(this)">Стрит</button>
+          <button onclick="setActive(this)">Кэжуал</button>
+          <button onclick="setActive(this)">Спорт</button>
+          <button onclick="setActive(this)">Драма</button>
+        </div>
+      </div>
+
+      <div class="form-step" id="step3">
+        <!-- Step 3 -->
+        <h2>Какое мероприятие?</h2>
+        <input
+          type="text"
+          class="step-input"
+          id="eventInput"
+          placeholder="В офис \ ресторан \ прогулку"
+        />
+      </div>
+
+      <div class="form-step" id="step4">
+        <!-- Step 4 -->
+        <h2>Какой у вас цвет волос?</h2>
+        <div class="step-buttons">
+          <button onclick="setActive(this)">Блондин(ка)</button>
+          <button onclick="setActive(this)">Рыжий(ая)</button>
+          <button onclick="setActive(this)">Шатен(ка)</button>
+          <button onclick="setActive(this)">Брюнет(ка)</button>
+        </div>
+      </div>
+
+      <div class="form-step" id="step5">
+        <!-- Step 5 -->
+        <h2>Сезон</h2>
+        <div class="step-buttons">
+          <button onclick="setActive(this)">Лето</button>
+          <button onclick="setActive(this)">Демисезон</button>
+          <button onclick="setActive(this)">Зима</button>
+        </div>
+      </div>
+
+      <div class="form-step" id="step6">
+        <!-- Step 6 -->
+        <h2>В каком цвете хотели бы оформить лук?</h2>
+        <input type="text" class="step-input" id="colorInput" />
+      </div>
+
+      <div class="form-step" id="step7">
+        <!-- Step 7 -->
+        <h2>Ваш возраст?</h2>
+        <input type="number" class="step-input" id="ageInput" />
+      </div>
+
+      <div class="form-step" id="step8">
+        <!-- Step 8 -->
+        <h2>Ваша почта</h2>
+        <input type="email" class="step-input" id="emailInput" />
+      </div>
+
+      <!-- Buttons -->
+      <div class="buttons">
+        <button class="btn btn_prev" onclick="prevStep()" style="display: none">
+          Назад
+        </button>
+        <button class="btn btn_next" onclick="validateAndNext()">Далее</button>
+        <button
+          class="btn btn_result"
+          onclick="getResult()"
+          style="display: none"
+        >
+          Получить результат
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let currentStep = 1;
+      const serverLink = "https://16d4-5-16-60-83.ngrok-free.app";
+
+      function showStep(step) {
+        document.querySelectorAll(".form-step").forEach(function (element) {
+          element.style.display = "none";
+        });
+
+        document.getElementById(`step${step}`).style.display = "block";
+      }
+
+      function setActive(button) {
+        // Remove active class from all buttons in the current step
+        const buttons = button.parentElement.querySelectorAll("button");
+        buttons.forEach((btn) => btn.classList.remove("active"));
+
+        // Add active class to the clicked button
+        button.classList.add("active");
+      }
+
+      function nextStep() {
+        if (currentStep < 8) {
+          currentStep++;
+          showStep(currentStep);
+          updateButtonVisibility();
+        }
+      }
+
+      function prevStep() {
+        if (currentStep > 1) {
+          currentStep--;
+          showStep(currentStep);
+          updateButtonVisibility();
+        }
+      }
+
+      function validateAndNext() {
+        let isValid = true;
+
+        // Check if at least one button in the current step is active
+        if (
+          currentStep === 1 ||
+          currentStep === 2 ||
+          currentStep === 4 ||
+          currentStep === 5
+        ) {
+          const activeButtons = document.querySelectorAll(
+            `#step${currentStep} button.active`
+          );
+          if (activeButtons.length === 0) {
+            isValid = false;
+            alert("Пожалуйста, выберите один из вариантов.");
+            return;
+          }
+        }
+
+        // Additional validation for specific steps
+        if (isValid && currentStep === 3) {
+          const eventInput = document.getElementById("eventInput");
+          isValid = eventInput.value.trim() !== "";
+        } else if (isValid && currentStep === 6) {
+          const colorInput = document.getElementById("colorInput");
+          isValid = colorInput.value.trim() !== "";
+        } else if (isValid && currentStep === 7) {
+          const ageInput = document.getElementById("ageInput");
+          isValid = ageInput.value.trim() !== "";
+        } else if (isValid && currentStep === 8) {
+          const emailInput = document.getElementById("emailInput");
+          isValid = validateEmail(emailInput.value.trim());
+        }
+
+        if (isValid) {
+          nextStep();
+        } else {
+          alert("Пожалуйста, заполните поле.");
+        }
+      }
+
+      function updateButtonVisibility() {
+        const prevButton = document.querySelector(".btn_prev");
+        const nextButton = document.querySelector(".btn_next");
+        const resultButton = document.querySelector(".btn_result");
+
+        prevButton.style.display = currentStep === 1 ? "none" : "inline-block";
+        nextButton.style.display = currentStep === 8 ? "none" : "inline-block";
+        resultButton.style.display =
+          currentStep === 8 ? "inline-block" : "none";
+      }
+
+      function getResult() {
+        if (
+          emailInput.value.length === 0 ||
+          !validateEmail(emailInput.value.trim())
+        ) {
+          alert("Заполните корректно свой email!");
+          return;
+        }
+
+        const resultObject = {
+          gender: getSelectedOption("step1"),
+          style: getSelectedOption("step2"),
+          event: getTextInputValue("eventInput", "step3"),
+          hairColor: getSelectedOption("step4"),
+          season: getSelectedOption("step5"),
+          favoriteColor: getTextInputValue("colorInput", "step6"),
+          age: getTextInputValue("ageInput", "step7"),
+          email: getTextInputValue("emailInput", "step8"),
+        };
+
+        console.log(resultObject);
+
+        document.querySelector(".step-form").innerHTML =
+          "<h2>Пожалуйста, подождите...</h2>";
+
+        fetch(`${serverLink}/sd`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(resultObject),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const success = document.querySelector(".success");
+            success.querySelector("img").src = data.imgLink;
+            success.style.display = "flex";
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            document.querySelector(
+              ".step-form"
+            ).innerHTML = `<h2>Произошла ошибка!</h2>
+            <button class="btn" onclick="window.location.reload()">
+          Попробовать снова
+        </button>`;
+          });
+      }
+
+      function getSelectedOption(stepId) {
+        const activeButton = document.querySelector(`#${stepId} button.active`);
+        return activeButton ? activeButton.textContent.trim() : "";
+      }
+
+      function getTextInputValue(inputId, stepId) {
+        const inputValue = document.getElementById(inputId).value.trim();
+        if (inputValue === "" && (currentStep === 3 || currentStep === 6)) {
+          alert("Пожалуйста, заполните поле.");
+        }
+        return inputValue;
+      }
+
+      function validateEmail(email) {
+        // Simple email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        showStep(currentStep);
+        updateButtonVisibility();
+      });
+    </script>
+  </body>
+</html>
